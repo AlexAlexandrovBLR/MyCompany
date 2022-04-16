@@ -7,8 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MyCompany.Domain;
+using MyCompany.Domain.Repositories.Abstract;
+using MyCompany.Domain.Repositories.EntityFramework;
 using MyCompany.Service;
 
 namespace MyCompany
@@ -20,6 +25,32 @@ namespace MyCompany
         public void ConfigureServices(IServiceCollection services)
         {
             Configuration.Bind("Project",new Config());
+
+            services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
+            services.AddTransient<IServiceItemsRepository, EFServiceItemsRepositoty>();
+            services.AddTransient<DataManager>();
+
+            services.AddDbContext<AppDbContext>( x=> x.UseSqlServer(Config.ConnectionString));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+            {
+                opts.User.RequireUniqueEmail = true;
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "myCompanyAuth";
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/account/login";
+                options.AccessDeniedPath = "/account/accessdenied";
+                options.SlidingExpiration = true;
+            });
+
             services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddSessionStateTempDataProvider();
         }
@@ -31,6 +62,10 @@ namespace MyCompany
             app.UseRouting();
 
             app.UseStaticFiles();
+
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

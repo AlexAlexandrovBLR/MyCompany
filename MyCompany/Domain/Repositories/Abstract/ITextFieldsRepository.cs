@@ -8,9 +8,9 @@ namespace MyCompany.Domain.Repositories.Abstract
 {
     public interface ITextFieldsRepository
     {
-        IQueryable<TextField> GeTextFields();
-        TextField GeTextFieldById(Guid id);
-        TextField GeTextFieldCodeWord(string codeWord);
+        IQueryable<TextField> GetTextFields();
+        TextField GetTextFieldById(Guid id);
+        TextField GetTextFieldByCodeWord(string codeWord);
         void SaveTextField(TextField entity);
         void DeleteTextField(Guid id);
     }

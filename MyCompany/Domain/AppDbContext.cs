@@ -37,8 +37,8 @@ namespace MyCompany.Domain
             });
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
-                RoleId = "e7e87437-9873-405c-a9eb-917233423721",
-                UserId = "3bb3fada-3da3-49c8-9432-559a1be063b9"
+                RoleId = "3da22d3d-e31b-4990-bf47-f40a02d55ee6",
+                UserId = "13cdaa62-6887-4a32-9767-3ada997306a1"
             });
             modelBuilder.Entity<TextField>().HasData(new TextField
             {
