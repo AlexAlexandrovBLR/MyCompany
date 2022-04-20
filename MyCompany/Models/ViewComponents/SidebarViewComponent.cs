@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain;
 
 namespace MyCompany.Models.ViewComponents
 {
-    public class SidebarViewComponent:ViewComponent
+    public class SidebarViewComponent : ViewComponent
     {
         private readonly DataManager dataManager;
 

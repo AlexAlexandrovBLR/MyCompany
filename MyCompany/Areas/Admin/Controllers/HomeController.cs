@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MyCompany.Domain;
 
 namespace MyCompany.Areas.Admin.Controllers
@@ -16,6 +12,7 @@ namespace MyCompany.Areas.Admin.Controllers
         {
             this.dataManager = dataManager;
         }
+
         public IActionResult Index()
         {
             return View(dataManager.ServiceItems.GetServiceItems());

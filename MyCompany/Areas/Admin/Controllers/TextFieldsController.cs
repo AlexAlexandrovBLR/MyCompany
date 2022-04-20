@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MyCompany.Domain;
 using MyCompany.Domain.Entities;
 using MyCompany.Service;
@@ -13,7 +9,6 @@ namespace MyCompany.Areas.Admin.Controllers
     public class TextFieldsController : Controller
     {
         private readonly DataManager dataManager;
-
         public TextFieldsController(DataManager dataManager)
         {
             this.dataManager = dataManager;
@@ -33,7 +28,6 @@ namespace MyCompany.Areas.Admin.Controllers
                 dataManager.TextFields.SaveTextField(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }
-
             return View(model);
         }
     }

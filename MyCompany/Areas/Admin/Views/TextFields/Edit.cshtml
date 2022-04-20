@@ -9,7 +9,7 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <from asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
             <input type="hidden" asp-for="CodeWord" />
@@ -22,7 +22,7 @@
             </div>
             <div class="div-box">
                 <label asp-for="Text"></label>
-                <input asp-for="Text" />
+                <textarea asp-for="Text"></textarea>
                 <span asp-validation-for="Text"></span>
             </div>
             <div class="div-box">
@@ -40,8 +40,8 @@
                 <input asp-for="MetaKeywords" />
                 <span asp-validation-for="MetaKeywords"></span>
             </div>
-            <input type="submit" value="Сохранить"/>
-        </from>
+            <input type="submit" value="Сохранить" />
+        </form>
     </div>
 </div>
 
@@ -49,7 +49,7 @@
 
 <script>
     window.onload = function() {
-        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x => x.Text)');
+        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Text)');
         newCKEdit.updateElement();
     }
 </script>

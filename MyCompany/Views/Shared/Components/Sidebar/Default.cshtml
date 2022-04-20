@@ -1,5 +1,4 @@
-﻿@using MyCompany.Domain.Entities
-@model IQueryable<MyCompany.Domain.Entities.ServiceItem>
+﻿@model IQueryable<ServiceItem>
 
 @if (Model?.Any() == true)
 {
@@ -10,7 +9,7 @@
             {
                 <li>
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img scr="~/images/@entity.TitleImagePath" alt="" class="left" />
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
                     </a>
                     <h4>
                         @entity.Title

@@ -48,8 +48,8 @@ namespace MyCompany.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3da22d3d-e31b-4990-bf47-f40a02d55ee6",
-                            ConcurrencyStamp = "a7e0f7ee-6851-4cb2-8831-cd5e85fd6113",
+                            Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
+                            ConcurrencyStamp = "6ad640d5-4b5d-420b-9de7-7c076391fcf9",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -146,15 +146,15 @@ namespace MyCompany.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "13cdaa62-6887-4a32-9767-3ada997306a1",
+                            Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "29094cb3-13bf-4c34-b0ea-638453aefc9a",
+                            ConcurrencyStamp = "ba452454-1327-4e4c-8710-c2a6d3c71cf2",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHk/c5pCJCqd+YdkAG0N9CZXnFBRIkwVwOr+V65Qp1yyo0/oNlj63JlhApWMGFOGnQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEABR+rsnIj0ZnpTiaPHAql5rCvIoXi0T7uBzIojwki6gyOisyqzfBykVkUFJg+oNcw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -225,8 +225,8 @@ namespace MyCompany.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "13cdaa62-6887-4a32-9767-3ada997306a1",
-                            RoleId = "3da22d3d-e31b-4990-bf47-f40a02d55ee6"
+                            UserId = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
+                            RoleId = "44546e06-8719-4ad8-b88a-f271ae9d6eab"
                         });
                 });
 
@@ -326,25 +326,25 @@ namespace MyCompany.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("79d59371-5f69-4973-b25f-85300344b493"),
+                            Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2022, 4, 16, 18, 19, 34, 462, DateTimeKind.Utc).AddTicks(3548),
+                            DateAdded = new DateTime(2022, 4, 19, 18, 10, 56, 286, DateTimeKind.Utc).AddTicks(3942),
                             Text = "Содержание заполняется администратором",
                             Title = "Главная"
                         },
                         new
                         {
-                            Id = new Guid("c8d627ef-1f6d-44e0-9ba8-fb1d4ac2b8c2"),
+                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2022, 4, 16, 18, 19, 34, 462, DateTimeKind.Utc).AddTicks(5533),
+                            DateAdded = new DateTime(2022, 4, 19, 18, 10, 56, 286, DateTimeKind.Utc).AddTicks(6225),
                             Text = "Содержание заполняется администратором",
                             Title = "Наши услуги"
                         },
                         new
                         {
-                            Id = new Guid("a4c3923f-36f0-4127-923e-805051f20cab"),
+                            Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2022, 4, 16, 18, 19, 34, 462, DateTimeKind.Utc).AddTicks(5619),
+                            DateAdded = new DateTime(2022, 4, 19, 18, 10, 56, 286, DateTimeKind.Utc).AddTicks(6333),
                             Text = "Содержание заполняется администратором",
                             Title = "Контакты"
                         });

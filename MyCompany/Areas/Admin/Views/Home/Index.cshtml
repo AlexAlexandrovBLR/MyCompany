@@ -17,11 +17,11 @@
                 @foreach (ServiceItem entity in Model)
                 {
                     <div>
-                        <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">Редактировать</a>
+                        <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>
                         |
-                        <form style="display: inline-block;" id="from-@entity.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
+                        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
                             <input type="hidden" name="id" value="@entity.Id">
-                            <a href="#" onclick="document.getElementById('from-@entity.Id').submit();">удалить</a>
+                            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">удалить</a>
                         </form>
                         |
                         <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
@@ -39,8 +39,10 @@
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакты</a>
     </div>
     <div class="div-box">
-        <from asp-area="" asp-controller="Account" asp-action="Logout" method="post">
-            <input type="submit" value="Выйти"/>
-        </from>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+            <input type="submit" value="Выйти" />
+        </form>
     </div>
 </div>
+
+

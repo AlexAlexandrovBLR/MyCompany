@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain;
 using MyCompany.Domain.Entities;
 using MyCompany.Service;
-using Microsoft.AspNetCore.Http;
 
 namespace MyCompany.Areas.Admin.Controllers
 {
@@ -16,12 +13,11 @@ namespace MyCompany.Areas.Admin.Controllers
     public class ServiceItemsController : Controller
     {
         private readonly DataManager dataManager;
-        private readonly IWebHostEnvironment hostEnvironment;
-
-        public ServiceItemsController(DataManager dataManager, IWebHostEnvironment hostEnvironment)
+        private readonly IWebHostEnvironment hostingEnvironment;
+        public ServiceItemsController(DataManager dataManager, IWebHostEnvironment hostingEnvironment)
         {
             this.dataManager = dataManager;
-            this.hostEnvironment = hostEnvironment;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Edit(Guid id)
@@ -29,7 +25,6 @@ namespace MyCompany.Areas.Admin.Controllers
             var entity = id == default ? new ServiceItem() : dataManager.ServiceItems.GetServiceItemById(id);
             return View(entity);
         }
-
         [HttpPost]
         public IActionResult Edit(ServiceItem model, IFormFile titleImageFile)
         {
@@ -38,7 +33,7 @@ namespace MyCompany.Areas.Admin.Controllers
                 if (titleImageFile != null)
                 {
                     model.TitleImagePath = titleImageFile.FileName;
-                    using (var stream =new FileStream(Path.Combine(hostEnvironment.WebRootPath, "image/", titleImageFile.FileName), FileMode.Create))
+                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
                     {
                         titleImageFile.CopyTo(stream);
                     }
@@ -46,8 +41,7 @@ namespace MyCompany.Areas.Admin.Controllers
                 dataManager.ServiceItems.SaveServiceItem(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }
-
-            return View();
+            return View(model);
         }
 
         [HttpPost]

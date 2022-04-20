@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MyCompany.Models;
 
 namespace MyCompany.Controllers
@@ -14,7 +11,6 @@ namespace MyCompany.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
-
         public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signinMgr)
         {
             userManager = userMgr;
@@ -27,7 +23,6 @@ namespace MyCompany.Controllers
             ViewBag.returnUrl = returnUrl;
             return View(new LoginViewModel());
         }
-
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
@@ -38,8 +33,7 @@ namespace MyCompany.Controllers
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result =
-                        await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
                     if (result.Succeeded)
                     {
                         return Redirect(returnUrl ?? "/");
@@ -47,7 +41,6 @@ namespace MyCompany.Controllers
                 }
                 ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
             }
-
             return View(model);
         }
 
